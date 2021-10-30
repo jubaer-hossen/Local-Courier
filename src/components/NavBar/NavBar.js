@@ -52,7 +52,7 @@ const NavBar = () => {
                                     aria-current="page"
                                     to="/ManageAllServices"
                                 >
-                                    ManageAllOder
+                                    ManageAllServices
                                 </Link>
                             </li>
                             <li className="nav-item">
