@@ -12,6 +12,15 @@ const Shipping = () => {
     const { user } = useAuth();
     // console.log(user);
 
+    useEffect(() => {
+        fetch(`https://secret-wave-38214.herokuapp.com/services/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                // reset(data);
+            });
+    }, [id, reset]);
+
     const onSubmit = data => {
         console.log(data);
         axios
@@ -24,19 +33,11 @@ const Shipping = () => {
                 }
             });
     };
-    useEffect(() => {
-        fetch(`https://secret-wave-38214.herokuapp.com/services/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-                reset(data);
-            });
-    }, [id, reset]);
 
     console.log(products);
     return (
         <div className="text-center my-5">
-            <h2>this is the shipping</h2>
+            <h2>This is the shipping</h2>
             <form
                 className="d-flex flex-column justify-content-center align-items-center"
                 onSubmit={handleSubmit(onSubmit)}
@@ -44,7 +45,7 @@ const Shipping = () => {
                 <input
                     className="w-50 mb-3"
                     placeholder="Name"
-                    defaultValue={user.displayName}
+                    value={user.displayName}
                     {...register('Name', {
                         required: true,
                         maxLength: 100,
@@ -56,21 +57,21 @@ const Shipping = () => {
                     value={user.email}
                     {...register('email')}
                 />
-                <input
+                {/* <input
                     className="w-50 mb-3 d-none"
                     placeholder="ProductID"
                     value={id}
                     {...register('productId')}
-                />
+                /> */}
                 <input
                     className="w-50 mb-3 d-none"
-                    placeholder="ProductID"
+                    placeholder="productImg"
                     value={products.img}
                     {...register('productImg')}
                 />
                 <input
                     className="w-50 mb-3"
-                    placeholder="ProductID"
+                    placeholder="productName"
                     value={products.Name}
                     {...register('productName')}
                 />

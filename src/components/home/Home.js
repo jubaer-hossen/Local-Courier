@@ -1,4 +1,5 @@
 import Couriers from '../Couriers/Couriers';
+import Outstanding from '../OUTSTANDING/Outstanding';
 import Banner from './Banner';
 
 const Home = () => {
@@ -10,6 +11,9 @@ const Home = () => {
 
             <div>
                 <Couriers></Couriers>
+            </div>
+            <div>
+                <Outstanding></Outstanding>
             </div>
         </div>
     );
