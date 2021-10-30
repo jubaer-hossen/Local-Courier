@@ -12,7 +12,7 @@ const MyOrder = () => {
 
     const handleDelete = id => {
         // console.log(id);
-        const proceed = window.confirm('Are you sure you want to delete');
+        const proceed = window.confirm('Are you sure you want to Cancel');
         if (proceed) {
             const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
             fetch(url, {
@@ -61,27 +61,21 @@ const MyOrder = () => {
                                         Price: {order.productPrice}
                                     </h3>
                                 </div>
-
-                                <br />
-                                <div className="border shadow pt-3">
-                                    <h4 className="card-title">{order.Name}</h4>
-                                    <h5 className="card-title">
-                                        {order.email}
-                                    </h5>
-                                    <h5 className="card-title">
-                                        Address: {order.address}
-                                    </h5>
-                                    <p>{order.phone}</p>
-                                    <div>
-                                        <button
-                                            className="btn btn-danger px-5 my-4"
-                                            onClick={() =>
-                                                handleDelete(order._id)
-                                            }
-                                        >
-                                            delete
-                                        </button>
-                                    </div>
+                            </div>
+                            <div className="border shadow pt-3 mb-3">
+                                <h4 className="card-title">{order.Name}</h4>
+                                <h5 className="card-title">{order.email}</h5>
+                                <h5 className="card-title">
+                                    Address: {order.address}
+                                </h5>
+                                <p>{order.phone}</p>
+                                <div>
+                                    <button
+                                        className="btn btn-danger px-5 my-4"
+                                        onClick={() => handleDelete(order._id)}
+                                    >
+                                        Cancel
+                                    </button>
                                 </div>
                             </div>
                         </div>

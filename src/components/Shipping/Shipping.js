@@ -12,13 +12,6 @@ const Shipping = () => {
     const { user } = useAuth();
     // console.log(user);
 
-    useEffect(() => {
-        fetch(`https://secret-wave-38214.herokuapp.com/services/${id}`)
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [id]);
-    console.log(products);
-
     const onSubmit = data => {
         console.log(data);
         axios
@@ -31,7 +24,16 @@ const Shipping = () => {
                 }
             });
     };
+    useEffect(() => {
+        fetch(`https://secret-wave-38214.herokuapp.com/services/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+                reset(data);
+            });
+    }, [id, reset]);
 
+    console.log(products);
     return (
         <div className="text-center my-5">
             <h2>this is the shipping</h2>
@@ -63,7 +65,7 @@ const Shipping = () => {
                 <input
                     className="w-50 mb-3 d-none"
                     placeholder="ProductID"
-                    value={products?.img}
+                    value={products.img}
                     {...register('productImg')}
                 />
                 <input
@@ -76,13 +78,13 @@ const Shipping = () => {
                 <input
                     className="w-50 mb-3 d-none"
                     placeholder="ProductPrice"
-                    value={products?.price}
+                    value={products.price}
                     {...register('productPrice')}
                 />
                 <textarea
                     className="w-50 mb-3 d-none"
                     placeholder="ProductDetails"
-                    value={products?.details}
+                    value={products.details}
                     {...register('productDetails')}
                 />
                 <textarea
