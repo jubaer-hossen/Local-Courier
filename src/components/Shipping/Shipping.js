@@ -22,6 +22,10 @@ const Shipping = () => {
     }, [id, reset]);
 
     const onSubmit = data => {
+        data.productImg = products.img;
+        data.productName = products.Name;
+        data.productPrice = products.price;
+        data.productDetails = products.details;
         console.log(data);
         axios
             .post('https://secret-wave-38214.herokuapp.com/shipping', data)
@@ -57,12 +61,12 @@ const Shipping = () => {
                     value={user.email}
                     {...register('email')}
                 />
-                {/* <input
+                <input
                     className="w-50 mb-3 d-none"
                     placeholder="ProductID"
                     value={id}
                     {...register('productId')}
-                /> */}
+                />
                 <input
                     className="w-50 mb-3 d-none"
                     placeholder="productImg"
