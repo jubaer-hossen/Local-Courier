@@ -23,11 +23,18 @@ const LogIn = () => {
 
     return (
         <div className="text-center mt-5 d-flex justify-content-center align-items-center bg-form">
-            <button onClick={handleGoogleLogin} className="btn btn-danger">
-                <i class="fab fa-google"></i> Google Sign In
-            </button>
+            <div>
+                <div className="text-primary">
+                    <h1>Please, Login with google</h1>
+                </div>
+                <br />
+                <button onClick={handleGoogleLogin} className="btn btn-danger">
+                    <i class="fab fa-google"></i> Google Sign In
+                </button>
+            </div>
             <br />
-            <p>{error}</p>
+            <br />
+            <p className="text-danger">{error}</p>
         </div>
     );
 };

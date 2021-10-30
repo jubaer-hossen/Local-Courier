@@ -50,6 +50,15 @@ const NavBar = () => {
                                 <Link
                                     className="nav-link active"
                                     aria-current="page"
+                                    to="/allOrders"
+                                >
+                                    AllOrders
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link active"
+                                    aria-current="page"
                                     to="/ManageAllServices"
                                 >
                                     ManageAllServices

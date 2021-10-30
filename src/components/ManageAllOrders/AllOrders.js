@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import './MyOrder.css';
 
-const MyOrder = () => {
+const AllOrders = () => {
     const [orders, setOrders] = useState([]);
-    const { user } = useAuth();
-    const email = user.email;
-    // console.log(email);
 
     useEffect(() => {
         fetch('https://secret-wave-38214.herokuapp.com/orders')
             .then(res => res.json())
-            .then(data => {
-                setOrders(data);
-                console.log(data);
-                const userData = orders.filter(order => order.email === email);
-                setOrders(userData);
-                console.log(email);
-                console.log(orders);
-            });
-    }, [email, orders]);
+            .then(data => setOrders(data));
+    }, []);
 
     const handleDelete = id => {
         // console.log(id);
         const proceed = window.confirm('Are you sure you want to Cancel');
         if (proceed) {
             const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
-
             fetch(url, {
                 method: 'DELETE',
             })
@@ -45,10 +32,10 @@ const MyOrder = () => {
     };
     return (
         <div className="text-center container order-bg">
-            <h1>Your All Order Here</h1>
+            <h1>Manage All Order </h1>
             <div className="row row-cols-1 row-cols-md-2 g-4 my-5">
                 {orders.map(order => (
-                    <div key={order._id} className="col">
+                    <div className="col">
                         <div className="card h-100 shadow">
                             <div>
                                 <img
@@ -98,4 +85,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default AllOrders;
