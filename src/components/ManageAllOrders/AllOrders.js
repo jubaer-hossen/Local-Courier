@@ -107,7 +107,9 @@ const AllOrders = () => {
                                         className="btn btn-danger mx-2 px-5 my-4"
                                         onClick={() => handlePending(order._id)}
                                     >
-                                        Pending
+                                        {order.orderCondition === 'Approved'
+                                            ? 'Approved'
+                                            : 'Pending'}
                                     </button>
                                 </div>
                             </div>
