@@ -18,12 +18,12 @@ const MyOrder = () => {
                 // if (orders.length == 0) {
                 //     setError("You don't have any orders");
                 // }
-                const userData = orders.filter(order => order.email === email);
+                const userData = orders.filter(order => order.email == email);
                 setOrders(userData);
                 console.log(email);
                 console.log(orders);
             });
-    }, [email, orders]);
+    }, [orders]);
 
     const handleDelete = id => {
         // console.log(id);
