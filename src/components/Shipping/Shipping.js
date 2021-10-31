@@ -42,6 +42,7 @@ const Shipping = () => {
     return (
         <div className="text-center my-5">
             <h2>This is the shipping</h2>
+            <h4>Please, Fill the form below</h4>
             <form
                 className="d-flex flex-column justify-content-center align-items-center"
                 onSubmit={handleSubmit(onSubmit)}

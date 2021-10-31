@@ -13,10 +13,6 @@ const Details = () => {
     }, [id]);
     console.log(details);
 
-    // const handleShipping = id => {
-    //     console.log(id);
-    // };
-
     return (
         <div className="container my-5 d-md-flex justify-content-around align-items-center">
             <div className="card card-body me-2 text-center">
@@ -26,10 +22,7 @@ const Details = () => {
                 <h4>Price: {details?.price}</h4>
 
                 <Link to={`/shipping/${details?._id}`}>
-                    <button
-                        // onClick={() => handleShipping(details?._id)}
-                        className="btn btn-primary"
-                    >
+                    <button className="btn btn-primary">
                         Process To Shipping
                     </button>
                 </Link>
