@@ -12,6 +12,8 @@ const Shipping = () => {
     const { user } = useAuth();
     // console.log(user);
 
+    const orderCondition = 'pending';
+
     useEffect(() => {
         fetch(`https://secret-wave-38214.herokuapp.com/services/${id}`)
             .then(res => res.json())
@@ -92,6 +94,12 @@ const Shipping = () => {
                     placeholder="ProductDetails"
                     value={products.details}
                     {...register('productDetails')}
+                />
+                <input
+                    className="w-50 mb-3 d-none"
+                    placeholder="order condition"
+                    value={orderCondition}
+                    {...register('orderCondition')}
                 />
                 <textarea
                     className="w-50 mb-3"
