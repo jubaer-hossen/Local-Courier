@@ -25,6 +25,12 @@ const AllOrders = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                     alert('Updated successfully');
+                    console.log(data);
+                    const remainingData = orders.filter(
+                        order => order._id != id
+                    );
+                    setOrders(remainingData);
+                    // setOrders(data);
                 }
             });
     };
@@ -104,7 +110,11 @@ const AllOrders = () => {
                                         Cancel
                                     </button>
                                     <button
-                                        className="btn btn-danger mx-2 px-5 my-4"
+                                        className={
+                                            order.orderCondition !== 'Approved'
+                                                ? 'btn btn-danger mx-2 px-5 my-4'
+                                                : 'disabled btn btn-danger mx-2 px-5 my-4'
+                                        }
                                         onClick={() => handlePending(order._id)}
                                     >
                                         {order.orderCondition === 'Approved'
