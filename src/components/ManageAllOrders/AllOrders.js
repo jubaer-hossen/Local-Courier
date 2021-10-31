@@ -70,10 +70,16 @@ const AllOrders = () => {
                                 <p>{order.phone}</p>
                                 <div>
                                     <button
-                                        className="btn btn-danger px-5 my-4"
+                                        className="btn btn-danger px-5 my-4 mx-2"
                                         onClick={() => handleDelete(order._id)}
                                     >
                                         Cancel
+                                    </button>
+                                    <button
+                                        className="btn btn-danger mx-2 px-5 my-4"
+                                        // onClick={() => handlePending(order._id)}
+                                    >
+                                        Pending
                                     </button>
                                 </div>
                             </div>
