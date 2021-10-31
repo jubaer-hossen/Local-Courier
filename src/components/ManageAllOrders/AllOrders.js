@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const AllOrders = () => {
     const [orders, setOrders] = useState([]);
-    // const [orderApproval, setOrderApproval] = useState('');
 
     useEffect(() => {
         fetch('https://secret-wave-38214.herokuapp.com/orders')
@@ -10,34 +9,9 @@ const AllOrders = () => {
             .then(data => setOrders(data));
     }, []);
 
-    // const orderStatus = e => {
-    //     const orderSituation = e.target.value;
-    //     // const updateOrder = { orderApproval };
-    //     setOrderApproval(orderSituation);
-    //     console.log(orderSituation);
-    // };
-
-    // const handleOrderUpdate = (e, id) => {
-    //     const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
-    //     fetch(url, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //         },
-    //         body: JSON.stringify(),
-    //     }).then();
-
-    //     e.preventDefault();
-    //     const orderReview = orderApproval;
-    //     console.log(orderReview);
-    // };
-
-    const orderApproval = orders.find(order =>
-        console.log(order.orderCondition)
-    );
-
     const handlePending = id => {
         console.log(id);
+
         const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'PUT',
@@ -45,7 +19,14 @@ const AllOrders = () => {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(),
-        }).then();
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    alert('Updated successfully');
+                }
+            });
     };
 
     const handleDelete = id => {
@@ -115,32 +96,6 @@ const AllOrders = () => {
                                     </span>
                                 </h6>
 
-                                {/* <div>
-                                    <form onSubmit={handleOrderUpdate}>
-                                        <label htmFor="cars">
-                                            Choose Order Condition
-                                        </label>{' '}
-                                        <br />
-                                        <select
-                                            onSelect={orderStatus}
-                                            id="cars"
-                                            name="cars"
-                                            className="px-5"
-                                        >
-                                            <option value="pending">
-                                                {order.orderCondition}
-                                            </option>
-                                            <option value="approved">
-                                                Approved
-                                            </option>
-                                        </select>
-                                        <br /> <br />
-                                        <input
-                                            className="btn btn-success px-5"
-                                            type="submit"
-                                        />
-                                    </form>
-                                </div> */}
                                 <div>
                                     <button
                                         className="btn btn-danger px-5 my-4 mx-2"
