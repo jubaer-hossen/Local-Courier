@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const AllOrders = () => {
     const [orders, setOrders] = useState([]);
-    const [orderApproval, setOrderApproval] = useState('');
+    // const [orderApproval, setOrderApproval] = useState('');
 
     useEffect(() => {
         fetch('https://secret-wave-38214.herokuapp.com/orders')
@@ -10,14 +10,34 @@ const AllOrders = () => {
             .then(data => setOrders(data));
     }, []);
 
-    const orderStatus = e => {
-        const orderSituation = e.target.value;
-        // const updateOrder = { orderApproval };
-        setOrderApproval(orderSituation);
-        console.log(orderSituation);
-    };
+    // const orderStatus = e => {
+    //     const orderSituation = e.target.value;
+    //     // const updateOrder = { orderApproval };
+    //     setOrderApproval(orderSituation);
+    //     console.log(orderSituation);
+    // };
 
-    const handleOrderUpdate = (e, id) => {
+    // const handleOrderUpdate = (e, id) => {
+    //     const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json',
+    //         },
+    //         body: JSON.stringify(),
+    //     }).then();
+
+    //     e.preventDefault();
+    //     const orderReview = orderApproval;
+    //     console.log(orderReview);
+    // };
+
+    const orderApproval = orders.find(order =>
+        console.log(order.orderCondition)
+    );
+
+    const handlePending = id => {
+        console.log(id);
         const url = `https://secret-wave-38214.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'PUT',
@@ -26,10 +46,6 @@ const AllOrders = () => {
             },
             body: JSON.stringify(),
         }).then();
-
-        e.preventDefault();
-        const orderReview = orderApproval;
-        console.log(orderReview);
     };
 
     const handleDelete = id => {
@@ -99,7 +115,7 @@ const AllOrders = () => {
                                     </span>
                                 </h6>
 
-                                <div>
+                                {/* <div>
                                     <form onSubmit={handleOrderUpdate}>
                                         <label htmFor="cars">
                                             Choose Order Condition
@@ -124,7 +140,7 @@ const AllOrders = () => {
                                             type="submit"
                                         />
                                     </form>
-                                </div>
+                                </div> */}
                                 <div>
                                     <button
                                         className="btn btn-danger px-5 my-4 mx-2"
@@ -132,12 +148,12 @@ const AllOrders = () => {
                                     >
                                         Cancel
                                     </button>
-                                    {/* <button
+                                    <button
                                         className="btn btn-danger mx-2 px-5 my-4"
-                                        // onClick={() => handlePending(order._id)}
+                                        onClick={() => handlePending(order._id)}
                                     >
                                         Pending
-                                    </button> */}
+                                    </button>
                                 </div>
                             </div>
                         </div>
