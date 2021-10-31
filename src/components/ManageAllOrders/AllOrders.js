@@ -90,7 +90,14 @@ const AllOrders = () => {
                                 <h5 className="card-title">
                                     Address: {order.address}
                                 </h5>
-                                <p>{order.phone}</p>
+                                <p>Phone: {order.phone}</p>
+                                <br />
+                                <h6>
+                                    Order Condition:{' '}
+                                    <span className="fw-bold">
+                                        {order.orderCondition}
+                                    </span>
+                                </h6>
 
                                 <div>
                                     <form onSubmit={handleOrderUpdate}>
