@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import './MyOrder.css';
 
 const MyOrder = () => {
+    const [error, setError] = useState('');
     const [orders, setOrders] = useState([]);
     const { user } = useAuth();
     const email = user.email;
@@ -14,6 +15,9 @@ const MyOrder = () => {
             .then(data => {
                 setOrders(data);
                 console.log(data);
+                // if (orders.length == 0) {
+                //     setError("You don't have any orders");
+                // }
                 const userData = orders.filter(order => order.email === email);
                 setOrders(userData);
                 console.log(email);
@@ -46,9 +50,13 @@ const MyOrder = () => {
     return (
         <div className="text-center container order-bg">
             <h1>Your All Order Here</h1>
+            {/* <h4 className="text-warning"> {error} </h4> */}
             <div className="row row-cols-1 row-cols-md-2 g-4 my-5">
                 {orders.map(order => (
                     <div key={order._id} className="col">
+                        {/* {orders.length === 0 && (
+                            <p>You don't have any orders.</p>
+                        )} */}
                         <div className="card h-100 shadow">
                             <div>
                                 <img

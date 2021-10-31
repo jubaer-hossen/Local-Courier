@@ -35,7 +35,7 @@ const AllOrders = () => {
             <h1>Manage All Order </h1>
             <div className="row row-cols-1 row-cols-md-2 g-4 my-5">
                 {orders.map(order => (
-                    <div className="col">
+                    <div key={order._id} className="col">
                         <div className="card h-100 shadow">
                             <div>
                                 <img
